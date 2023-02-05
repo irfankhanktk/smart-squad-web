@@ -11,7 +11,7 @@ client = axios.create({
 //Axios Interceptors
 client.interceptors.request.use(
     async config => {
-        const token = await UTILS.getItem(STORAGEKEYS.token);
+        // const token = await UTILS.getItem(STORAGEKEYS.token);
         config.headers = {
             Accept: 'application/json',
             'Cache-Control': 'no-cache',
@@ -21,7 +21,7 @@ client.interceptors.request.use(
 
         config.params = config.params || {};
         config.cancelToken = source.token || {};
-        config.headers['Authorization'] = `Bearer ${token}`;
+        // config.headers['Authorization'] = `Bearer ${token}`;
         return config;
     },
     error => {

@@ -1,6 +1,6 @@
-export const IP = 'http://124.29.208.60:5159';
+export const IP = 'https://test.smartsquad.online';
 export const URLS = {
-    base_url: `${IP}/api/`,
+    base_url: `${IP}`,
     image_url: `${IP}/`,
     auth: {
         signup: 'user/signUp',
