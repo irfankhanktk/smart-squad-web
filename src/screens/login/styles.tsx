@@ -11,7 +11,14 @@ const styles = StyleSheet.create({
     width: Platform.OS === 'web' ? mvs(300) : undefined,
     alignSelf: Platform.OS === 'web' ? 'center' : 'auto'
   },
+  rmsCredentails: { alignSelf: 'center', textAlign: 'center', lineHeight: mvs(28), fontSize: mvs(20) },
   img: { height: '100%', width: '100%' },
+  imgLogo: {
+    alignSelf: 'center',
+    marginVertical: mvs(15),
+    height: mvs(90),
+    width: mvs(250)
+  },
   label: {
     paddingHorizontal: mvs(20),
     paddingBottom: mvs(26),

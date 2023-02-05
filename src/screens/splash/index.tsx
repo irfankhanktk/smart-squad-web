@@ -19,19 +19,19 @@ const Splash = (props: props) => {
   React.useEffect(() => {
     (async () => {
       let screen: 'Login' | 'BottomTab' = 'Login';
-      UTILS.getItem(STORAGEKEYS.userId).then((userId: any) => {
+      UTILS.getItem(STORAGEKEYS.user).then((user: any) => {
 
-        if (userId) {
+        if (user) {
           screen = 'BottomTab';
         }
-        UTILS.getItem(STORAGEKEYS.lang).then((lang) => {
-          if (lang) {
-            dispatch(setLanguage(lang));
-            i18n.changeLanguage(lang);
-          }
-        });
+        // UTILS.getItem(STORAGEKEYS.lang).then((lang) => {
+        //   if (lang) {
+        //     dispatch(setLanguage(lang));
+        //     i18n.changeLanguage(lang);
+        //   }
+        // });
         setTimeout(() => {
-          // navigation?.replace(screen);
+          navigation?.replace(screen);
         }, 2000);
       })
     })()

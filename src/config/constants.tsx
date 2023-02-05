@@ -13,7 +13,7 @@ export const NOTIFICATIONS_TYPES = {
   CaseDetails: 'CaseDetails',
 };
 export const STORAGEKEYS = {
-  userId: '@userId',
+  user: '@user',
   credential: '@credential',
   lang: '@language',
 };

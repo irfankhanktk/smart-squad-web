@@ -1,34 +1,31 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { useFormik } from 'formik';
 import React from 'react';
-import { I18nManager, Image, ImageBackground, Platform, TouchableOpacity, View } from 'react-native';
+import { Image, ImageBackground, View } from 'react-native';
+import * as IMGS from '../../assets/images';
 import { PrimaryButton } from '../../components/atoms/buttons';
 import PrimaryInput from '../../components/atoms/inputs';
 import { KeyboardAvoidScrollview } from '../../components/atoms/keyboard-avoid-scrollview';
-import { Row } from '../../components/atoms/row';
-import { mvs } from '../../config/metrices';
-import { useAppDispatch, useAppSelector } from '../../hooks/use-store';
+import { useAppDispatch } from '../../hooks/use-store';
+import { onLogin } from '../../services/api/api-actions';
 import i18n from '../../translation';
 import RootStackParamList from '../../types/navigation-types/root-stack';
 import Medium from '../../typography/medium-text';
 import { loginValidationSchema } from '../../validations';
 import { colors } from './../../config/colors';
-import Bold from './../../typography/bold-text';
-import Regular from './../../typography/regular-text';
 import styles from './styles';
-import * as IMGS from '../../assets/images'
-
+import { getDeviceId, getUniqueId, getManufacturer, getDeviceType } from 'react-native-device-info';
 type props = NativeStackScreenProps<RootStackParamList, 'Login'>;
 
 const Login = (props: props) => {
   const { navigation } = props;
   const dispatch = useAppDispatch();
-  const loginLoading = useAppSelector(s => s?.user.loginLoading);
-  const [rememberMe, setRememberMe] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
   const { t } = i18n;
   const initialValues = {
     username: '',
     password: '',
+    reason: '',
   };
   const { values, errors, touched, setFieldValue, setFieldTouched, isValid } =
     useFormik({
@@ -38,10 +35,25 @@ const Login = (props: props) => {
       validationSchema: loginValidationSchema,
       onSubmit: () => { },
     });
+  console.log('errors,', errors);
+
   const onSubmit = () => {
+    console.log(isValid);
+    console.log(Object.keys(touched).length > 0);
+
     if (isValid && Object.keys(touched).length > 0) {
       try {
-
+        var data = {
+          "userInfo": {
+            "LoginID": values.username,
+            "password": values.password,
+            "reasonForLogin": values.reason,
+            // "AgencyID": user.verifyCode.AgencyID[0],
+            "deviceID": getDeviceId(),
+            "deviceType": getDeviceType(),
+          }
+        }
+        dispatch(onLogin(data, setLoading))
       } catch (error) {
         console.log(error);
       }
@@ -58,11 +70,11 @@ const Login = (props: props) => {
       <ImageBackground source={IMGS.login_BG} style={styles.img}>
         <KeyboardAvoidScrollview
           contentContainerStyle={styles.contentContainerStyle}>
-          <Image source={IMGS.logofull_small} style={{ alignSelf: 'center', marginBottom: mvs(15), height: mvs(90), width: mvs(250) }} />
+          <Image source={IMGS.logofull_small} style={styles.imgLogo} />
           <View style={styles.middle}>
             <Medium
               label={`Please provide your RMS \ncredentails`}
-              style={{ alignSelf: 'center', textAlign: 'center', lineHeight: mvs(28), fontSize: mvs(20) }} />
+              style={styles.rmsCredentails} />
             <PrimaryInput
               label={'Username'}
               onChangeText={str => setFieldValue('username', str)}
@@ -72,7 +84,6 @@ const Login = (props: props) => {
               error={touched.username && errors?.username ? errors.username : undefined}
             />
             <PrimaryInput
-              secureTextEntry
               placeholder={'label_pass'}
               label={'label_pass'}
               onChangeText={str => setFieldValue('password', str)}
@@ -84,22 +95,21 @@ const Login = (props: props) => {
               }
             />
             <PrimaryInput
-              secureTextEntry
               placeholder={'Reason for access'}
               label={'Reason for access'}
-              onChangeText={str => setFieldValue('password', str)}
-              onBlur={() => setFieldTouched('password', true)}
-              value={values.password}
-              isPassword
+              onChangeText={str => setFieldValue('reason', str)}
+              onBlur={() => setFieldTouched('reason', true)}
+              value={values.reason}
               error={
-                touched.password && errors?.password ? errors.password : undefined
+                touched.reason && errors?.reason ? errors.reason : undefined
               }
             />
             <PrimaryButton
+
               title={t('login')}
               onPress={() => onSubmit()}
               containerStyle={styles.button}
-              loading={loginLoading}
+              loading={loading}
             />
             <Medium style={styles.accountText} color={colors.white} label={`${'Version 2.1'}`} />
           </View>

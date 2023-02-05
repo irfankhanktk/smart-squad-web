@@ -10,7 +10,7 @@ import { store } from './store';
 import { navigationRef } from './navigation/navigation-ref';
 import { linking } from './navigation/linking';
 import { RootNavigator } from './navigation/root-navigation';
-
+import './config/axios-interceptor'
 
 function App() {
   return (
