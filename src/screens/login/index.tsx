@@ -1,39 +1,44 @@
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { useFormik } from 'formik';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {useFormik} from 'formik';
 import React from 'react';
-import { Image, ImageBackground, View } from 'react-native';
+import {Image, ImageBackground, View} from 'react-native';
 import * as IMGS from '../../assets/images';
-import { PrimaryButton } from '../../components/atoms/buttons';
+import {PrimaryButton} from '../../components/atoms/buttons';
 import PrimaryInput from '../../components/atoms/inputs';
-import { KeyboardAvoidScrollview } from '../../components/atoms/keyboard-avoid-scrollview';
-import { useAppDispatch } from '../../hooks/use-store';
-import { onLogin } from '../../services/api/api-actions';
+import {KeyboardAvoidScrollview} from '../../components/atoms/keyboard-avoid-scrollview';
+import {useAppDispatch} from '../../hooks/use-store';
+import {onLogin} from '../../services/api/api-actions';
 import i18n from '../../translation';
 import RootStackParamList from '../../types/navigation-types/root-stack';
 import Medium from '../../typography/medium-text';
-import { loginValidationSchema } from '../../validations';
-import { colors } from './../../config/colors';
+import {loginValidationSchema} from '../../validations';
+import {colors} from './../../config/colors';
 import styles from './styles';
-import { getDeviceId, getUniqueId, getManufacturer, getDeviceType } from 'react-native-device-info';
+import {
+  getDeviceId,
+  getUniqueId,
+  getManufacturer,
+  getDeviceType,
+} from 'react-native-device-info';
 type props = NativeStackScreenProps<RootStackParamList, 'Login'>;
 
 const Login = (props: props) => {
-  const { navigation } = props;
+  const {navigation} = props;
   const dispatch = useAppDispatch();
   const [loading, setLoading] = React.useState(false);
-  const { t } = i18n;
+  const {t} = i18n;
   const initialValues = {
     username: '',
     password: '',
     reason: '',
   };
-  const { values, errors, touched, setFieldValue, setFieldTouched, isValid } =
+  const {values, errors, touched, setFieldValue, setFieldTouched, isValid} =
     useFormik({
       initialValues: initialValues,
       validateOnBlur: true,
       validateOnChange: true,
       validationSchema: loginValidationSchema,
-      onSubmit: () => { },
+      onSubmit: () => {},
     });
   console.log('errors,', errors);
 
@@ -44,27 +49,29 @@ const Login = (props: props) => {
     if (isValid && Object.keys(touched).length > 0) {
       try {
         var data = {
-          "userInfo": {
-            "LoginID": values.username,
-            "password": values.password,
-            "reasonForLogin": values.reason,
+          userInfo: {
+            LoginID: values.username,
+            password: values.password,
+            reasonForLogin: values.reason,
             // "AgencyID": user.verifyCode.AgencyID[0],
-            "deviceID": getDeviceId(),
-            "deviceType": getDeviceType(),
-          }
-        }
-        dispatch(onLogin(data, setLoading))
+            AgencyID: 'TECHAVIDUS',
+            deviceID: getDeviceId(),
+            deviceType: getDeviceType(),
+          },
+        };
+        console.log('====================================');
+        console.log(data);
+        console.log('====================================');
+        dispatch(onLogin(data, setLoading));
       } catch (error) {
         console.log(error);
       }
     } else {
-      setFieldTouched('email', true)
-      setFieldTouched('password', true)
+      setFieldTouched('email', true);
+      setFieldTouched('password', true);
     }
   };
-  React.useEffect(() => {
-
-  }, [])
+  React.useEffect(() => {}, []);
   return (
     <View style={styles.container}>
       <ImageBackground source={IMGS.login_BG} style={styles.img}>
@@ -74,14 +81,19 @@ const Login = (props: props) => {
           <View style={styles.middle}>
             <Medium
               label={`Please provide your RMS \ncredentails`}
-              style={styles.rmsCredentails} />
+              style={styles.rmsCredentails}
+            />
             <PrimaryInput
               label={'Username'}
               onChangeText={str => setFieldValue('username', str)}
               onBlur={() => setFieldTouched('username', true)}
               value={values.username}
               placeholder={'Username'}
-              error={touched.username && errors?.username ? errors.username : undefined}
+              error={
+                touched.username && errors?.username
+                  ? errors.username
+                  : undefined
+              }
             />
             <PrimaryInput
               placeholder={'label_pass'}
@@ -91,7 +103,9 @@ const Login = (props: props) => {
               value={values.password}
               isPassword
               error={
-                touched.password && errors?.password ? errors.password : undefined
+                touched.password && errors?.password
+                  ? errors.password
+                  : undefined
               }
             />
             <PrimaryInput
@@ -105,17 +119,19 @@ const Login = (props: props) => {
               }
             />
             <PrimaryButton
-
               title={t('login')}
               onPress={() => onSubmit()}
               containerStyle={styles.button}
               loading={loading}
             />
-            <Medium style={styles.accountText} color={colors.white} label={`${'Version 2.1'}`} />
+            <Medium
+              style={styles.accountText}
+              color={colors.white}
+              label={`${'Version 2.1'}`}
+            />
           </View>
         </KeyboardAvoidScrollview>
       </ImageBackground>
-
     </View>
   );
 };
