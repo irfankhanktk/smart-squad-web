@@ -2,17 +2,17 @@ import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {useFormik} from 'formik';
 import React from 'react';
 import {Image, ImageBackground, View} from 'react-native';
-import * as IMGS from '../../assets/images';
-import {PrimaryButton} from '../../components/atoms/buttons';
-import PrimaryInput from '../../components/atoms/inputs';
-import {KeyboardAvoidScrollview} from '../../components/atoms/keyboard-avoid-scrollview';
-import {useAppDispatch} from '../../hooks/use-store';
-import {onLogin} from '../../services/api/api-actions';
-import i18n from '../../translation';
-import RootStackParamList from '../../types/navigation-types/root-stack';
-import Medium from '../../typography/medium-text';
-import {loginValidationSchema} from '../../validations';
-import {colors} from './../../config/colors';
+import * as IMGS from '../../../assets/images';
+import {PrimaryButton} from '../../../components/atoms/buttons';
+import PrimaryInput from '../../../components/atoms/inputs';
+import {KeyboardAvoidScrollview} from '../../../components/atoms/keyboard-avoid-scrollview';
+import {useAppDispatch} from '../../../hooks/use-store';
+import {onLogin} from '../../../services/api/api-actions';
+import i18n from '../../../translation';
+import RootStackParamList from '../../../types/navigation-types/root-stack';
+import Medium from '../../../typography/medium-text';
+import {loginValidationSchema} from '../../../validations';
+import {colors} from '../../../config/colors';
 import styles from './styles';
 import {
   getDeviceId,
@@ -24,6 +24,10 @@ type props = NativeStackScreenProps<RootStackParamList, 'Login'>;
 
 const Login = (props: props) => {
   const {navigation} = props;
+  const data = props?.route?.params?.data;
+  console.log('====================================');
+  console.log(data);
+  console.log('====================================');
   const dispatch = useAppDispatch();
   const [loading, setLoading] = React.useState(false);
   const {t} = i18n;
@@ -48,21 +52,22 @@ const Login = (props: props) => {
 
     if (isValid && Object.keys(touched).length > 0) {
       try {
-        var data = {
+        var obj = {
           userInfo: {
             LoginID: values.username,
             password: values.password,
             reasonForLogin: values.reason,
             // "AgencyID": user.verifyCode.AgencyID[0],
-            AgencyID: 'TECHAVIDUS',
+            AgencyID: data?.AgencyID,
             deviceID: getDeviceId(),
             deviceType: getDeviceType(),
           },
         };
         console.log('====================================');
-        console.log(data);
+        console.log(obj);
         console.log('====================================');
         dispatch(onLogin(data, setLoading));
+        navigation.replace('App');
       } catch (error) {
         console.log(error);
       }
@@ -71,7 +76,7 @@ const Login = (props: props) => {
       setFieldTouched('password', true);
     }
   };
-  React.useEffect(() => {}, []);
+
   return (
     <View style={styles.container}>
       <ImageBackground source={IMGS.login_BG} style={styles.img}>

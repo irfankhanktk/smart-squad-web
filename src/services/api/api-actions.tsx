@@ -21,3 +21,8 @@ export const onLogin = (values: any, setLoading: (bool: boolean) => void) => {
     }
   };
 };
+
+export const onVerifyUserUrl = async (url: string, values: any) => {
+  const res = await postData(url, values);
+  return res;
+};

@@ -8,3 +8,11 @@ export const loginValidationSchema = yup.object().shape({
     .required('invalid password'),
   reason: yup.string().required('username is required'),
 });
+
+export const verifyUrlValidation = yup.object().shape({
+  agencyUrl: yup.string().required('Agency Url is required'),
+});
+
+export const verifyAgencyCodeValidation = yup.object().shape({
+  agencyCode: yup.string().required('Agency Url is required'),
+});
