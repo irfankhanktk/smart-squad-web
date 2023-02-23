@@ -1,6 +1,6 @@
 // import { STORAGEKEYS } from "../../config/constants";
 import { Alert } from "react-native";
-import { postData } from ".";
+import { postData, postFormData } from ".";
 import { AppDispatch, RootState } from "../../store";
 import { setUserInfo } from "../../store/reducers/user-reducer";
 // import { UTILS } from "../../utils";

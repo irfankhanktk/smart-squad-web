@@ -41,26 +41,26 @@ const Login = (props: props) => {
     console.log(isValid);
     console.log(Object.keys(touched).length > 0);
 
-    if (isValid && Object.keys(touched).length > 0) {
-      try {
-        var data = {
-          "userInfo": {
-            "LoginID": values.username,
-            "password": values.password,
-            "reasonForLogin": values.reason,
-            // "AgencyID": user.verifyCode.AgencyID[0],
-            "deviceID": getDeviceId(),
-            "deviceType": getDeviceType(),
-          }
+    // if (isValid && Object.keys(touched).length > 0) {
+    try {
+      var data = {
+        "userInfo": {
+          "LoginID": values.username,
+          "password": values.password,
+          "reasonForLogin": values.reason,
+          "AgencyID": 'TECHAVIDUS',
+          "deviceID": getDeviceId(),
+          "deviceType": getDeviceType(),
         }
-        dispatch(onLogin(data, setLoading))
-      } catch (error) {
-        console.log(error);
       }
-    } else {
-      setFieldTouched('email', true)
-      setFieldTouched('password', true)
+      dispatch(onLogin(JSON.stringify(data), setLoading))
+    } catch (error) {
+      console.log(error);
     }
+    // } else {
+    //   setFieldTouched('email', true)
+    //   setFieldTouched('password', true)
+    // }
   };
   React.useEffect(() => {
 
