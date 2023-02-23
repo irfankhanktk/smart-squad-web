@@ -1,7 +1,7 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { useFormik } from 'formik';
 import React from 'react';
-import { Image, ImageBackground, View } from 'react-native';
+import { Image, ImageBackground, Platform, View } from 'react-native';
 import * as IMGS from '../../../assets/images';
 import { PrimaryButton } from '../../../components/atoms/buttons';
 import PrimaryInput from '../../../components/atoms/inputs';
@@ -57,17 +57,17 @@ const Login = (props: props) => {
             LoginID: values.username,
             password: values.password,
             reasonForLogin: values.reason,
-            // "AgencyID": user.verifyCode.AgencyID[0],
-            AgencyID: data?.AgencyID,
+            //  "AgencyID": user.verifyCode.AgencyID[0],
+            AgencyID: data?.code,
             deviceID: getDeviceId(),
-            deviceType: getDeviceType(),
+            deviceType: Platform.OS,
           },
         };
-        console.log('====================================');
+        console.log('====================================::::::');
         console.log(obj);
         console.log('====================================');
-        dispatch(onLogin(data, setLoading));
-        navigation.replace('App');
+        dispatch(onLogin(obj, setLoading, navigation));
+
       } catch (error) {
         console.log(error);
       }

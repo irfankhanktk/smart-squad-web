@@ -1,7 +1,7 @@
 import axios from 'axios';
-import {URLS} from '../services/api/api-urls';
-import {UTILS} from '../utils';
-import {STORAGEKEYS} from './constants';
+import { URLS } from '../services/api/api-urls';
+import { UTILS } from '../utils';
+import { STORAGEKEYS } from './constants';
 const CancelToken = axios.CancelToken;
 source = CancelToken.source();
 client = axios.create({
@@ -39,7 +39,7 @@ client.interceptors.response.use(
   async function (error) {
     console.log('INTERCEPTOR ERROR RESPONSE : ', error);
     console.log('INTERCEPTOR ERROR RESPONSE CONFIG: ', error?.config);
-    const token = await UTILS.setItem(STORAGEKEYS.token);
+    // const token = await UTILS.setItem(STORAGEKEYS.token);
     const originalRequest = error.config;
     if (error?.response?.status === undefined && error?.config === undefined) {
       return Promise.reject('Hi Dude');

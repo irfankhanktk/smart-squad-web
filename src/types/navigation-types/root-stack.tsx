@@ -3,24 +3,8 @@ import { Case, UserInfo } from '../entities-types';
 type RootStackParamList = {
   Splash: undefined;
   Home: undefined;
+  VerifyUrl: undefined;
   Login: undefined;
-  SignupName: undefined;
-  SignupEmail: { name?: string };
-  SignupPhone: { name?: string; email: string };
-  SignupCcNo: { name?: string; email: string; phone?: string };
-  SignupNoEmployees: {
-    name?: string;
-    email: string;
-    phone?: string;
-    ccNo?: string;
-  };
-  SignupPassword: {
-    name?: string;
-    email: string;
-    phone?: string;
-    ccNo?: string;
-    noOfEmployees: string;
-  };
   ForgetPassword: undefined;
   BottomTab: undefined;
   StatusCases: { title?: string };

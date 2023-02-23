@@ -6,16 +6,21 @@ import { setUserInfo } from '../../store/reducers/user-reducer';
 // import { UTILS } from "../../utils";
 import { URLS } from './api-urls';
 
-export const onLogin = (values: any, setLoading: (bool: boolean) => void) => {
+export const onLogin = (values: any, setLoading: (bool: boolean) => void, navigation: any) => {
   return async (dispatch: AppDispatch, getState: () => RootState) => {
     try {
       setLoading(true);
+      console.log('values=>', values);
+
       const res = await postData(URLS.auth.login, values);
       console.log('res of onLogin=>', res.data);
       // UTILS.setItem(STORAGEKEYS.user, JSON.stringify(res?.user));
       dispatch(setUserInfo(res?.user));
+      navigation.replace('App');
     } catch (error: any) {
-      Alert.alert('', error?.message);
+      console.log('error=>>>m', error?.response?.data?.Message);
+
+      Alert.alert('', error?.response?.data?.Message || error?.message);
     } finally {
       setLoading(false);
     }

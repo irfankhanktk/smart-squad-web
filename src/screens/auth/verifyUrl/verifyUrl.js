@@ -1,28 +1,29 @@
 //import liraries
-import React, {useState} from 'react';
-import {View, Text, Image, Alert} from 'react-native';
-import styles from './styles';
+import { useFormik } from 'formik';
+import React, { useState } from 'react';
+import { Alert, Image, View } from 'react-native';
 import * as IMGS from '../../../assets/images';
-import {PrimaryButton} from '../../../components/atoms/buttons';
+import { PrimaryButton } from '../../../components/atoms/buttons';
 import PrimaryInput from '../../../components/atoms/inputs';
-import {KeyboardAvoidScrollview} from '../../../components/atoms/keyboard-avoid-scrollview';
+import { KeyboardAvoidScrollview } from '../../../components/atoms/keyboard-avoid-scrollview';
+import { onVerifyUserUrl } from '../../../services/api/api-actions';
 import Medium from '../../../typography/medium-text';
-import {verifyUrlValidation} from '../../../validations';
-import {useFormik} from 'formik';
-import {onVerifyUserUrl} from '../../../services/api/api-actions';
-import axios from 'axios';
+import { verifyUrlValidation } from '../../../validations';
+import styles from './styles';
 const VerifyUrl = props => {
+  const { route } = props;
+  console.log('route:', route);
   const initialValues = {
     agencyUrl: '',
   };
   const [loading, setloading] = useState(false);
-  const {values, errors, touched, setFieldValue, setFieldTouched, isValid} =
+  const { values, errors, touched, setFieldValue, setFieldTouched, isValid } =
     useFormik({
       initialValues: initialValues,
       validateOnBlur: true,
       validateOnChange: true,
       validationSchema: verifyUrlValidation,
-      onSubmit: () => {},
+      onSubmit: () => { },
     });
 
   const onSubmit = () => {
