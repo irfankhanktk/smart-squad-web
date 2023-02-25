@@ -4,6 +4,7 @@ import {Provider} from 'react-redux';
 import {store} from './store';
 import './config/axios-interceptor';
 import AppNavigator from './navigation';
+
 function App() {
   return (
     <SafeAreaProvider style={{flex: 1}}>

@@ -7,16 +7,19 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {navigationRef} from './navigation-ref';
 import {linking} from './linking';
 const AppStack = createStackNavigator();
+import {Provider as PaperProvider} from 'react-native-paper';
 const AppNavigator = () => {
   return (
-    <NavigationContainer ref={navigationRef} linking={linking}>
-      <AppStack.Navigator
-        screenOptions={{headerShown: false}}
-        initialRouteName={'Auth'}>
-        <AppStack.Screen name="Auth" component={Auth} />
-        <AppStack.Screen name="App" component={App} />
-      </AppStack.Navigator>
-    </NavigationContainer>
+    <PaperProvider>
+      <NavigationContainer ref={navigationRef} linking={linking}>
+        <AppStack.Navigator
+          screenOptions={{headerShown: false}}
+          initialRouteName={'Auth'}>
+          <AppStack.Screen name="Auth" component={Auth} />
+          <AppStack.Screen name="App" component={App} />
+        </AppStack.Navigator>
+      </NavigationContainer>
+    </PaperProvider>
   );
 };
 

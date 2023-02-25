@@ -1,18 +1,18 @@
 //import liraries
-import React, { useState } from 'react';
-import { View, Image, Alert } from 'react-native';
+import React, {useState} from 'react';
+import {View, Image, Alert} from 'react-native';
 import styles from './styles';
 import * as IMGS from '../../../assets/images';
-import { PrimaryButton } from '../../../components/atoms/buttons';
+import {PrimaryButton} from '../../../components/atoms/buttons';
 import PrimaryInput from '../../../components/atoms/inputs';
-import { KeyboardAvoidScrollview } from '../../../components/atoms/keyboard-avoid-scrollview';
+import {KeyboardAvoidScrollview} from '../../../components/atoms/keyboard-avoid-scrollview';
 import Medium from '../../../typography/medium-text';
 import {
   verifyAgencyCodeValidation,
   verifyUrlValidation,
 } from '../../../validations';
-import { useFormik } from 'formik';
-import { onVerifyUserUrl } from '../../../services/api/api-actions';
+import {useFormik} from 'formik';
+import {onVerifyUserUrl} from '../../../services/api/api-actions';
 const VerifyAgencyCode = props => {
   const agencies = props.route?.params?.agencies;
 
@@ -22,20 +22,20 @@ const VerifyAgencyCode = props => {
     agencyCode: '',
   };
   const [loading, setloading] = useState(false);
-  const { values, errors, touched, setFieldValue, setFieldTouched, isValid } =
+  const {values, errors, touched, setFieldValue, setFieldTouched, isValid} =
     useFormik({
       initialValues: initialValues,
       validateOnBlur: true,
       validateOnChange: true,
       validationSchema: verifyAgencyCodeValidation,
-      onSubmit: () => { },
+      onSubmit: () => {},
     });
 
   const onSubmit = () => {
     if (isValid && Object.keys(touched).length > 0) {
       try {
         confirmUserAgencyCode();
-      } catch (error) { }
+      } catch (error) {}
     } else {
       setFieldTouched('agencyCode', true);
     }
@@ -47,6 +47,10 @@ const VerifyAgencyCode = props => {
     let flag = false;
     let obj = {};
     list.map(e => {
+      console.log('====================================');
+      console.log(e?.code.toUpperCase());
+      console.log(values?.agencyCode.toUpperCase());
+      console.log('====================================');
       if (values?.agencyCode.toUpperCase() == e?.code.toUpperCase()) {
         obj = e;
         flag = true;
@@ -54,7 +58,7 @@ const VerifyAgencyCode = props => {
     });
 
     if (flag) {
-      props.navigation.navigate('Login', { data: obj });
+      props.navigation.navigate('Login', {data: obj});
     } else {
       Alert.alert('Code invalid.');
     }

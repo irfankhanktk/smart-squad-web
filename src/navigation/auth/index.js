@@ -16,7 +16,7 @@ const Auth = () => {
         barStyle={'light-content'}
       />
       <Stack.Navigator
-        initialRouteName="VerifyUrl"
+        initialRouteName="Splash"
         screenOptions={horizontalAnimation}>
         <Stack.Screen name="Splash" component={Splash} />
         <Stack.Group>

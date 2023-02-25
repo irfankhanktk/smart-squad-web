@@ -16,3 +16,15 @@ export const verifyUrlValidation = yup.object().shape({
 export const verifyAgencyCodeValidation = yup.object().shape({
   agencyCode: yup.string().required('Agency Url is required'),
 });
+
+export const searchPersomValidationSchema = yup.object().shape({
+  fName: yup
+    .string()
+    .required('First name is required')
+    .min(2, ({min}) => `minimum 2 characters please`),
+  lName: yup
+    .string()
+    .required('Last name is required')
+    .min(2, ({min}) => `minimum 2 characters please`),
+  dob: yup.string().required('Date of Birth is required'),
+});

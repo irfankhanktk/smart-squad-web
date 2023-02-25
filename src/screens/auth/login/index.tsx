@@ -1,18 +1,18 @@
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { useFormik } from 'formik';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {useFormik} from 'formik';
 import React from 'react';
-import { Image, ImageBackground, Platform, View } from 'react-native';
+import {Image, ImageBackground, Platform, View} from 'react-native';
 import * as IMGS from '../../../assets/images';
-import { PrimaryButton } from '../../../components/atoms/buttons';
+import {PrimaryButton} from '../../../components/atoms/buttons';
 import PrimaryInput from '../../../components/atoms/inputs';
-import { KeyboardAvoidScrollview } from '../../../components/atoms/keyboard-avoid-scrollview';
-import { useAppDispatch } from '../../../hooks/use-store';
-import { onLogin } from '../../../services/api/api-actions';
+import {KeyboardAvoidScrollview} from '../../../components/atoms/keyboard-avoid-scrollview';
+import {useAppDispatch} from '../../../hooks/use-store';
+import {onLogin} from '../../../services/api/api-actions';
 import i18n from '../../../translation';
 import RootStackParamList from '../../../types/navigation-types/root-stack';
 import Medium from '../../../typography/medium-text';
-import { loginValidationSchema } from '../../../validations';
-import { colors } from '../../../config/colors';
+import {loginValidationSchema} from '../../../validations';
+import {colors} from '../../../config/colors';
 import styles from './styles';
 import {
   getDeviceId,
@@ -23,28 +23,27 @@ import {
 type props = NativeStackScreenProps<RootStackParamList, 'Login'>;
 
 const Login = (props: props) => {
-  const { navigation } = props;
+  const {navigation} = props;
   const data = props?.route?.params?.data;
   console.log('====================================');
   console.log(data);
   console.log('====================================');
   const dispatch = useAppDispatch();
   const [loading, setLoading] = React.useState(false);
-  const { t } = i18n;
+  const {t} = i18n;
   const initialValues = {
     username: '',
     password: '',
     reason: '',
   };
-  const { values, errors, touched, setFieldValue, setFieldTouched, isValid } =
+  const {values, errors, touched, setFieldValue, setFieldTouched, isValid} =
     useFormik({
       initialValues: initialValues,
       validateOnBlur: true,
       validateOnChange: true,
       validationSchema: loginValidationSchema,
-      onSubmit: () => { },
+      onSubmit: () => {},
     });
-  console.log('errors,', errors);
 
   const onSubmit = () => {
     console.log(isValid);
@@ -58,16 +57,18 @@ const Login = (props: props) => {
             password: values.password,
             reasonForLogin: values.reason,
             //  "AgencyID": user.verifyCode.AgencyID[0],
-            AgencyID: data?.code,
+            AgencyID: data?.AgencyID,
             deviceID: getDeviceId(),
-            deviceType: Platform.OS,
+            deviceType:
+              Platform.OS == 'android'
+                ? 'Android'
+                : Platform.OS == 'ios'
+                ? 'iOS'
+                : 'windows',
+            // deviceType: Platform.OS == 'android' ? 'Android' ? Platform.OS == 'iOS'? "iOS":"windows"
           },
         };
-        console.log('====================================::::::');
-        console.log(obj);
-        console.log('====================================');
         dispatch(onLogin(obj, setLoading, navigation));
-
       } catch (error) {
         console.log(error);
       }
@@ -83,7 +84,7 @@ const Login = (props: props) => {
 
   return (
     <View style={styles.container}>
-      <ImageBackground source={IMGS.login_BG} style={styles.img}>
+      <ImageBackground source={IMGS.PoliceCarLight} style={styles.img}>
         <KeyboardAvoidScrollview
           contentContainerStyle={styles.contentContainerStyle}>
           <Image source={IMGS.logofull_small} style={styles.imgLogo} />

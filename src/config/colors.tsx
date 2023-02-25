@@ -6,11 +6,13 @@ export const colors = {
   black: '#000000',
   white: '#ffffff',
   transparent: 'transparent',
-  primary: 'green', //'#5586FF'
+  primary: '#3c383b',
+  iconColor: '#97c3ed',
   secondary: '#232D47', //'#F2F2F2',
   gray: '#484959',
   red: 'red',
   blue: '#4F7EE2',
+  button: '#049004',
   shadow: {
     shadowColor: '#000',
     shadowOffset: {

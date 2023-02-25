@@ -1,17 +1,18 @@
 import React from 'react';
 import {
   StyleProp,
-  StyleSheet, TextStyle,
+  StyleSheet,
+  TextStyle,
   TouchableOpacity,
   View,
-  ViewStyle
+  ViewStyle,
 } from 'react-native';
-import { PlusIcon } from '../../../assets/icons';
-import { colors } from '../../../config/colors';
-import { mvs } from '../../../config/metrices';
+import {PlusIcon} from '../../../assets/icons';
+import {colors} from '../../../config/colors';
+import {mvs} from '../../../config/metrices';
 import Medium from '../../../typography/medium-text';
-import { Loader } from '../loader';
-import { Row } from '../row';
+import {Loader} from '../loader';
+import {Row} from '../row';
 type props = {
   onPress: () => void;
   title: string;
@@ -23,7 +24,7 @@ type props = {
   containerStyle?: StyleProp<ViewStyle>;
 };
 export const PlusButton = (props: props) => {
-  const { onPress, title } = props;
+  const {onPress, title} = props;
   return (
     <TouchableOpacity style={styles.plusContainer} onPress={onPress}>
       <PlusIcon />
@@ -31,14 +32,25 @@ export const PlusButton = (props: props) => {
   );
 };
 export const PrimaryButton = (props: props) => {
-  const { onPress, title, disabled, loading, textStyle, containerStyle, borderRadius = mvs(6) } = props;
+  const {
+    onPress,
+    title,
+    disabled,
+    loading,
+    textStyle,
+    containerStyle,
+    borderRadius = mvs(6),
+  } = props;
   return (
     <TouchableOpacity
       disabled={disabled || loading}
       style={[
         styles.primaryContainer,
         containerStyle,
-        { borderRadius, backgroundColor: `${colors.primary}${disabled ? '50' : ''}` },
+        {
+          borderRadius,
+          backgroundColor: `${colors.button}${disabled ? '50' : ''}`,
+        },
       ]}
       onPress={onPress}>
       {loading ? (
@@ -50,14 +62,16 @@ export const PrimaryButton = (props: props) => {
   );
 };
 export const RadioButton = (props: props) => {
-  const { onPress, selected, title } = props;
+  const {onPress, selected, title} = props;
   return (
     <Row style={styles.radioRow}>
       <TouchableOpacity onPress={onPress} style={styles.radioContainer}>
-        <View style={{
-          backgroundColor: selected ? colors.primary : colors.border,
-          ...styles.radioCircle,
-        }} />
+        <View
+          style={{
+            backgroundColor: selected ? colors.primary : colors.border,
+            ...styles.radioCircle,
+          }}
+        />
       </TouchableOpacity>
       <Medium label={title} />
     </Row>

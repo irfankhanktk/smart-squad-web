@@ -1,6 +1,6 @@
 import React from 'react';
 import {Platform, View, Text, TouchableOpacity} from 'react-native';
-import {Home} from '../../screens/app';
+import {Home, SearchRecord, SearchPerson} from '../../screens/app';
 import {mvs} from '../../config/metrices';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -226,6 +226,7 @@ const MainTabScreens = props => {
 //       drawerContent={props => <CustomDrawer {...props} />}
 //       initialRouteName={'MainTabScreens'}>
 //       <Drawer.Screen name={'MainTabScreens'} component={MainTabScreens} />
+//       <Drawer.Screen name={'SearchRecord'} component={SearchRecord} />
 //     </Drawer.Navigator>
 //   );
 // };
@@ -235,8 +236,10 @@ const App = () => {
     <MainApp.Navigator
       screenOptions={{headerShown: false, gestureEnabled: false}}
       defaultScreenOptions={{gestureEnabled: false}}
-      initialRouteName={'MainTabScreens'}>
-      <MainApp.Screen name={'MainTabScreens'} component={MainTabScreens} />
+      initialRouteName={'Home'}>
+      <MainApp.Screen name={'Home'} component={Home} />
+      <MainApp.Screen name={'SearchRecord'} component={SearchRecord} />
+      <MainApp.Screen name={'SearchPerson'} component={SearchPerson} />
     </MainApp.Navigator>
   );
 };
