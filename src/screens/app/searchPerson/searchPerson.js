@@ -169,7 +169,7 @@ const SearchPerson = ({navigation}) => {
 
           <PrimaryButton
             title={'Search'}
-            onPress={() => onSubmit()}
+            onPress={() => navigation.navigate('PersonSearchResult')}
             containerStyle={styles.button}
             loading={loading}
           />

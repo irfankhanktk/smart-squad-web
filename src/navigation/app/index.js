@@ -1,6 +1,6 @@
 import React from 'react';
-import {Platform, View, Text, TouchableOpacity} from 'react-native';
-import {Home, SearchRecord, SearchPerson} from '../../screens/app';
+import {View, Text} from 'react-native';
+
 import {mvs} from '../../config/metrices';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -21,6 +21,12 @@ const HistoryStack = createStackNavigator();
 const MainTab = createBottomTabNavigator();
 const MainApp = createStackNavigator();
 // const Drawer = createDrawerNavigator();
+import {
+  Home,
+  SearchRecord,
+  SearchPerson,
+  PersonSearchResult,
+} from '../../screens/app';
 
 const HomeStackScreens = () => {
   return (
@@ -240,6 +246,10 @@ const App = () => {
       <MainApp.Screen name={'Home'} component={Home} />
       <MainApp.Screen name={'SearchRecord'} component={SearchRecord} />
       <MainApp.Screen name={'SearchPerson'} component={SearchPerson} />
+      <MainApp.Screen
+        name={'PersonSearchResult'}
+        component={PersonSearchResult}
+      />
     </MainApp.Navigator>
   );
 };
