@@ -1,19 +1,16 @@
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import {
   Image,
   StyleProp,
   StyleSheet,
-  TextStyle,
-  TouchableOpacity,
-  View,
+  TextStyle, View
 } from 'react-native';
-import {splashBg} from '../../../assets/images';
-import {colors} from '../../../config/colors';
-import {mvs} from '../../../config/metrices';
-import {navigate} from '../../../navigation/navigation-ref';
+import { splashBg } from '../../../assets/images';
+import { colors } from '../../../config/colors';
+import { mvs } from '../../../config/metrices';
 import Medium from '../../../typography/medium-text';
-import {Row} from '../row';
+import { Row } from '../row';
 type props = {
   style?: StyleProp<TextStyle>;
   title?: string;
@@ -21,16 +18,16 @@ type props = {
   bellicon?: boolean;
   back?: boolean;
 };
-const HomeHeader = ({style, name, title, back, bellicon, ...props}: props) => {
+const HomeHeader = ({ style, name, title, back, bellicon, ...props }: props) => {
   const navigation = useNavigation();
   return (
     <Row style={[styles.container, style]}>
-      <Row style={{flex: 1, justifyContent: 'flex-start'}}>
+      <Row style={{ flex: 1, justifyContent: 'flex-start' }}>
         <Image source={splashBg} style={styles.img} />
         <Medium style={[styles.name]} label={name} />
       </Row>
       <Medium style={[styles.title]} label={title} />
-      <View style={{flex: 1, alignItems: 'flex-end'}}></View>
+      <View style={{ flex: 1, alignItems: 'flex-end' }}></View>
     </Row>
   );
 };

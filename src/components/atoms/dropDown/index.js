@@ -1,11 +1,12 @@
 //import liraries
-import React, {Component} from 'react';
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import React, { Component } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import styles from './styles';
 import Regular from '../../../typography/regular-text';
-import {Icon} from 'react-native-elements';
-import {colors} from '../../../config/colors';
-import {mvs} from '../../../config/metrices';
+// import {Icon} from 'react-native-elements';
+import Icon from 'react-native-vector-icons'
+import { colors } from '../../../config/colors';
+import { mvs } from '../../../config/metrices';
 const DropDown = ({
   label,
   value,

@@ -1,10 +1,10 @@
 //import liraries
-import React, {Component} from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
+import React, { Component } from 'react';
+import { View, Text, TouchableOpacity } from 'react-native';
 import styles from './styles';
-import {Icon} from 'react-native-elements';
-import {colors} from '../../../config/colors';
-import {mvs} from '../../../config/metrices';
+import Icon from 'react-native-vector-icons/Feather';
+import { colors } from '../../../config/colors';
+import { mvs } from '../../../config/metrices';
 
 const AppHeader = ({
   backgroundColor = colors.black,

@@ -1,13 +1,13 @@
 //import liraries
-import React, {Component} from 'react';
-import {View, Image, ImageBackground, TouchableOpacity} from 'react-native';
+import React, { Component } from 'react';
+import { View, Image, ImageBackground, TouchableOpacity } from 'react-native';
 import * as IMGS from '../../../assets/images';
 import styles from './styles';
-import {Icon} from 'react-native-elements';
 import Regular from '../../../typography/regular-text';
-import {colors} from '../../../config/colors';
-import {mvs} from '../../../config/metrices';
-
+import { colors } from '../../../config/colors';
+import { mvs } from '../../../config/metrices';
+import Icon from 'react-native-vector-icons/AntDesign'
+import IconM from 'react-native-vector-icons/MaterialIcons'
 const BackGroundContainer = ({
   firstName,
   lastName,
@@ -38,7 +38,7 @@ const BackGroundContainer = ({
         />
 
         <TouchableOpacity onPress={onPressNotification}>
-          <Icon
+          <IconM
             name="notifications"
             type="material-icon"
             color={colors.white}

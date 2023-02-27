@@ -1,19 +1,17 @@
 //import liraries
-import React, {useState} from 'react';
-import {View, StatusBar, SafeAreaView, TouchableOpacity} from 'react-native';
-import styles from './styles';
-import {KeyboardAvoidScrollview} from '../../../components/atoms/keyboard-avoid-scrollview';
-import AppHeader from '../../../components/general/appHeader';
-import {colors} from '../../../config/colors';
-import {PrimaryButton} from '../../../components/atoms/buttons';
-import {useFormik} from 'formik';
-import {Menu, Divider} from 'react-native-paper';
-import {searchPersomValidationSchema} from '../../../validations';
-import PrimaryInput from '../../../components/atoms/inputs';
-import DropDown from '../../../components/atoms/dropDown';
-import DateTimePickerModal from 'react-native-modal-datetime-picker';
+import { useFormik } from 'formik';
 import moment from 'moment';
-const SearchPerson = ({navigation}) => {
+import React, { useState } from 'react';
+import { SafeAreaView, StatusBar, TouchableOpacity, View } from 'react-native';
+import DateTimePickerModal from 'react-native-modal-datetime-picker';
+import { PrimaryButton } from '../../../components/atoms/buttons';
+import PrimaryInput from '../../../components/atoms/inputs';
+import { KeyboardAvoidScrollview } from '../../../components/atoms/keyboard-avoid-scrollview';
+import AppHeader from '../../../components/general/appHeader';
+import { colors } from '../../../config/colors';
+import { searchPersomValidationSchema } from '../../../validations';
+import styles from './styles';
+const SearchPerson = ({ navigation }) => {
   const [loading, setLoading] = useState(false);
   const [visible, setVisible] = React.useState(false);
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
@@ -50,13 +48,13 @@ const SearchPerson = ({navigation}) => {
     gender: 'Male',
     phone: '',
   };
-  const {values, errors, touched, setFieldValue, setFieldTouched, isValid} =
+  const { values, errors, touched, setFieldValue, setFieldTouched, isValid } =
     useFormik({
       initialValues: initialValues,
       validateOnBlur: true,
       validateOnChange: true,
       validationSchema: searchPersomValidationSchema,
-      onSubmit: () => {},
+      onSubmit: () => { },
     });
 
   const onSubmit = () => {
@@ -94,7 +92,7 @@ const SearchPerson = ({navigation}) => {
       <StatusBar backgroundColor={colors.black} barStyle={'light-content'} />
       <AppHeader
         onPressLeftIcon={() => navigation.goBack()}
-        onPressRightIcon={() => {}}
+        onPressRightIcon={() => { }}
         title={'Search Person'}
         showLeftIcon={true}
         leftIconName="arrow-left"
@@ -150,7 +148,7 @@ const SearchPerson = ({navigation}) => {
             keyboardType="phone-pad"
           />
 
-          <Menu
+          {/* <Menu
             visible={visible}
             onDismiss={() => closeMenu('')}
             anchor={
@@ -165,7 +163,7 @@ const SearchPerson = ({navigation}) => {
             <Menu.Item onPress={() => closeMenu('Female')} title="Female" />
             <Divider />
             <Menu.Item onPress={() => closeMenu('Other')} title="Other" />
-          </Menu>
+          </Menu> */}
 
           <PrimaryButton
             title={'Search'}

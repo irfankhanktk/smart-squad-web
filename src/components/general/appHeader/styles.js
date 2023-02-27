@@ -1,9 +1,7 @@
 //import liraries
-import React, {Component} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
-import {mvs} from '../../../config/metrices';
-import babelConfig from '../../../../babel.config';
+import { StyleSheet } from 'react-native';
 import fonts from '../../../assets/fonts';
+import { mvs } from '../../../config/metrices';
 
 const styles = StyleSheet.create({
   container: color => ({

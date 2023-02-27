@@ -1,23 +1,23 @@
 //import liraries
-import React, {Component} from 'react';
-import {View, SafeAreaView, StatusBar, ScrollView} from 'react-native';
+import React, { Component } from 'react';
+import { View, SafeAreaView, StatusBar, ScrollView } from 'react-native';
 import styles from './styles';
-import {colors} from '../../../config/colors';
+import { colors } from '../../../config/colors';
 import DrawerButton from '../../../components/general/DrawerButton';
 import AppHeader from '../../../components/general/appHeader';
-const SearchRecord = ({navigation}) => {
+const SearchRecord = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar backgroundColor={colors.black} barStyle={'light-content'} />
       <AppHeader
         onPressLeftIcon={() => navigation.goBack()}
-        onPressRightIcon={() => {}}
+        onPressRightIcon={() => { }}
         title={'Search Record'}
         showLeftIcon={true}
         leftIconName="arrow-left"
       />
       <View style={styles.scrollList}>
-        <ScrollView contentContainerStyle={{flex: 1}}>
+        <ScrollView contentContainerStyle={{ flex: 1 }}>
           <DrawerButton
             iconType="entypo"
             iconName="user"
@@ -27,7 +27,7 @@ const SearchRecord = ({navigation}) => {
           />
           <DrawerButton
             iconType="entypo"
-            iconName="location-pin"
+            iconName="map-marker"
             label="Location"
             marginTop={3}
           />
@@ -39,7 +39,7 @@ const SearchRecord = ({navigation}) => {
           />
           <DrawerButton
             iconType="material-icon"
-            iconName="business"
+            iconName="building-o"
             label="Business"
             marginTop={3}
           />

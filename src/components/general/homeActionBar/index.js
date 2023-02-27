@@ -1,10 +1,11 @@
 //import liraries
-import React, {Component} from 'react';
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import React, { Component } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import styles from './styles';
-import {colors} from '../../../config/colors';
-import {Icon} from 'react-native-elements';
-import {mvs} from '../../../config/metrices';
+import { colors } from '../../../config/colors';
+import Icon from 'react-native-vector-icons/AntDesign';
+import EIcon from 'react-native-vector-icons/Entypo';
+import { mvs } from '../../../config/metrices';
 const HomeActionBar = ({
   onPressUpload,
   onPressDataBase,
@@ -24,7 +25,7 @@ const HomeActionBar = ({
         </TouchableOpacity>
 
         <TouchableOpacity onPress={onPressDataBase}>
-          <Icon
+          <EIcon
             name="database"
             type="entypo"
             color={colors.white}
@@ -36,7 +37,7 @@ const HomeActionBar = ({
           <Icon name="edit" type="edit" color={colors.white} size={mvs(30)} />
         </TouchableOpacity>
         <TouchableOpacity onPress={onPressOption}>
-          <Icon
+          <EIcon
             name="dots-three-vertical"
             type="entypo"
             color={colors.white}

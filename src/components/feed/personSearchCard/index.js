@@ -1,9 +1,11 @@
 import React from 'react';
 import moment from 'moment';
-import {Text, View, TouchableOpacity} from 'react-native';
-import {colors} from '../../../config/colors';
-import {mvs} from '../../../config/metrices';
-import {Icon} from 'react-native-elements';
+import { Text, View, TouchableOpacity } from 'react-native';
+import { colors } from '../../../config/colors';
+import { mvs } from '../../../config/metrices';
+// import {Icon} from 'react-native-elements';
+import Icon from 'react-native-vector-icons/FontAwesome5'
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import styles from './styles';
 const PersonSearchCard = ({
   surName,
@@ -34,15 +36,15 @@ const PersonSearchCard = ({
       </View>
 
       <View style={styles.rowView}>
-        {cautionCount > 0 && (
-          <Icon
+        {/* {cautionCount > 0 && (
+          <MaterialCommunityIcons
             name="alert-circle"
             color={colors.red}
             style={styles.alertStyle}
             size={mvs(25)}
             type="materialicon"
           />
-        )}
+        )} */}
         <View style={styles.rightTextContainer}>
           <Text style={styles.rightText}>{score}</Text>
         </View>

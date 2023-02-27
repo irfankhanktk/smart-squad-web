@@ -1,13 +1,13 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import { View, Text } from 'react-native';
 
-import {mvs} from '../../config/metrices';
-import {createStackNavigator} from '@react-navigation/stack';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import { mvs } from '../../config/metrices';
+import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 // import {createDrawerNavigator} from '@react-navigation/drawer';
-import {colors} from '../../config/colors';
+import { colors } from '../../config/colors';
 import styles from './styles';
-import {Icon} from 'react-native-elements';
+import Icon from 'react-native-vector-icons/AntDesign'
 // import CustomDrawer from '../drawer';
 // import {useTranslation} from 'react-i18next';
 const AppStack = createStackNavigator();
@@ -31,7 +31,7 @@ import {
 const HomeStackScreens = () => {
   return (
     <HomeStack.Navigator
-      screenOptions={{headerShown: false, gestureEnabled: false}}
+      screenOptions={{ headerShown: false, gestureEnabled: false }}
       initialRouteName={'History'}>
       <HomeStack.Screen name={'Home'} component={Home} />
     </HomeStack.Navigator>
@@ -40,7 +40,7 @@ const HomeStackScreens = () => {
 const FavouriteStackScreens = () => {
   return (
     <FavouriteStack.Navigator
-      screenOptions={{headerShown: false, gestureEnabled: false}}
+      screenOptions={{ headerShown: false, gestureEnabled: false }}
       initialRouteName={'History'}>
       <FavouriteStack.Screen name={'Home'} component={Home} />
     </FavouriteStack.Navigator>
@@ -50,7 +50,7 @@ const FavouriteStackScreens = () => {
 const MainTabScreens = props => {
   return (
     <MainTab.Navigator
-      barStyle={{backgroundColor: colors.primary}}
+      barStyle={{ backgroundColor: colors.primary }}
       screenOptions={{
         tabBarHideOnKeyboard: true,
         headerShown: false,
@@ -84,7 +84,7 @@ const MainTabScreens = props => {
         name={'HomeStackScreens'}
         component={HomeStackScreens}
         options={() => ({
-          tabBarIcon: ({focused, color, size}) => {
+          tabBarIcon: ({ focused, color, size }) => {
             return (
               <View style={styles.tab}>
                 <Icon
@@ -111,7 +111,7 @@ const MainTabScreens = props => {
         name={'FavouriteStackScreens'}
         component={FavouriteStackScreens}
         options={props => ({
-          tabBarIcon: ({focused, color, size}) => {
+          tabBarIcon: ({ focused, color, size }) => {
             return (
               <View style={styles.tab}>
                 <Icon
@@ -240,8 +240,8 @@ const MainTabScreens = props => {
 const App = () => {
   return (
     <MainApp.Navigator
-      screenOptions={{headerShown: false, gestureEnabled: false}}
-      defaultScreenOptions={{gestureEnabled: false}}
+      screenOptions={{ headerShown: false, gestureEnabled: false }}
+      defaultScreenOptions={{ gestureEnabled: false }}
       initialRouteName={'Home'}>
       <MainApp.Screen name={'Home'} component={Home} />
       <MainApp.Screen name={'SearchRecord'} component={SearchRecord} />
