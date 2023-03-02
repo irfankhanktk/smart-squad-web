@@ -4,7 +4,9 @@ type RootStackParamList = {
   Splash: undefined;
   Home: undefined;
   VerifyUrl: undefined;
-  Login: undefined;
+  Login: {
+    data: any
+  };
   ForgetPassword: undefined;
   BottomTab: undefined;
   StatusCases: { title?: string };

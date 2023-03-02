@@ -1,8 +1,7 @@
 //import liraries
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-// import {Icon} from 'react-native-elements';
-import AntDesign from 'react-native-vector-icons/FontAwesome'
+// import AntDesign from 'react-native-vector-icons/FontAwesome'
 import styles from './styles';
 import { colors } from '../../../config/colors';
 import { mvs } from '../../../config/metrices';
@@ -20,12 +19,12 @@ const DrawerButton = ({
   return (
     <View style={styles.container(marginTop)}>
       <TouchableOpacity style={styles.btnStyels(buttonWidth)} onPress={onPress}>
-        <AntDesign
+        {/* <AntDesign
           name={iconName}
           type={iconType}
           color={iconColor}
           size={mvs(iconSize)}
-        />
+        /> */}
         <Text style={styles.btnText}>{label}</Text>
       </TouchableOpacity>
       <Text style={styles.countText}>{countText}</Text>

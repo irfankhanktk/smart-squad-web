@@ -6,8 +6,8 @@ import styles from './styles';
 import Regular from '../../../typography/regular-text';
 import { colors } from '../../../config/colors';
 import { mvs } from '../../../config/metrices';
-import Icon from 'react-native-vector-icons/AntDesign'
-import IconM from 'react-native-vector-icons/MaterialIcons'
+// import Icon from 'react-native-vector-icons/AntDesign'
+// import IconM from 'react-native-vector-icons/MaterialIcons'
 const BackGroundContainer = ({
   firstName,
   lastName,
@@ -23,12 +23,12 @@ const BackGroundContainer = ({
       imageStyle={styles.imgLogo}>
       <View style={styles.innerContainer}>
         <TouchableOpacity onPress={onPressMessage}>
-          <Icon
+          {/* <Icon
             name="message1"
             type="antdesign"
             color={colors.white}
             size={mvs(40)}
-          />
+          /> */}
         </TouchableOpacity>
 
         <Image
@@ -38,12 +38,12 @@ const BackGroundContainer = ({
         />
 
         <TouchableOpacity onPress={onPressNotification}>
-          <IconM
+          {/* <IconM
             name="notifications"
             type="material-icon"
             color={colors.white}
             size={mvs(40)}
-          />
+          /> */}
         </TouchableOpacity>
       </View>
       <Regular

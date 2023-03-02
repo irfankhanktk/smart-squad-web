@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import styles from './styles';
-import Icon from 'react-native-vector-icons/Feather';
+// import Icon from 'react-native-vector-icons/Feather';
 import { colors } from '../../../config/colors';
 import { mvs } from '../../../config/metrices';
 
@@ -21,12 +21,12 @@ const AppHeader = ({
     <View style={styles.container(backgroundColor)}>
       {showLeftIcon ? (
         <TouchableOpacity onPress={onPressLeftIcon} style={styles.emptyBox}>
-          <Icon
+          {/* <Icon
             type={leftIconType}
             name={leftIconName}
             color={textColor}
             size={mvs(25)}
-          />
+          /> */}
         </TouchableOpacity>
       ) : (
         <View style={styles.emptyBox}></View>
@@ -34,12 +34,12 @@ const AppHeader = ({
       <Text style={styles.titleText(textColor)}>{title}</Text>
       {showRightIcon ? (
         <TouchableOpacity onPress={onPressRightIcon}>
-          <Icon
+          {/* <Icon
             type="materialicon"
             name="notifications"
             color={textColor}
             size={mvs(25)}
-          />
+          /> */}
         </TouchableOpacity>
       ) : (
         <View style={styles.emptyBox}></View>

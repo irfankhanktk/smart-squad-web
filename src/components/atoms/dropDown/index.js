@@ -3,8 +3,7 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import styles from './styles';
 import Regular from '../../../typography/regular-text';
-// import {Icon} from 'react-native-elements';
-import Icon from 'react-native-vector-icons'
+// import Icon from 'react-native-vector-icons'
 import { colors } from '../../../config/colors';
 import { mvs } from '../../../config/metrices';
 const DropDown = ({
@@ -21,12 +20,12 @@ const DropDown = ({
       <Regular label={label} style={styles.labelStyle} />
       <TouchableOpacity onPress={onPress} style={styles.container}>
         <Regular label={value} style={styles.valueText} />
-        <Icon
+        {/* <Icon
           name={iconName}
           type={iconType}
           color={iconColor}
           size={mvs(iconSize)}
-        />
+        /> */}
       </TouchableOpacity>
     </View>
   );
